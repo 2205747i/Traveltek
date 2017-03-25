@@ -8,7 +8,7 @@ from cruises.models import Cruise
 
 # Create your views here.
 def home(request):
-    return render(request, 'cruises/index.html')
+    return render(request, 'cruises/home.html')
 
 def form(request):
     return render(request, 'cruises/form.html')
