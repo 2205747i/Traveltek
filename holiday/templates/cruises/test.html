@@ -28,9 +28,18 @@
 			-o-border-radius: 0px;
 			position: relative;
 			margin:10px 50%;
+			
 		}
 	</style>
+	<script type="text/javascript" >
 	
+		$('#slider').cycle({
+		fx:		'scrollHorz',
+		speed:	'slow',
+		next:	'#next',
+		prev:	'#prev'
+		});
+	</script>
 	<script type="text/javascript">
 			
 			var imgArray = new Array(8);
@@ -98,12 +107,25 @@
 					<!-- container -->
 					<div class="container " style="margin:50px 0">
 						<div class="col-md-6">
-						<a href="#"><img alt="direction" usemap="#directions" name="slideShow" width="324" height="432" src="{% static'1.jpg' %}" alt="harbour0" /></a>
-				
-							<map name="directions">
-								<area shape="rect" coords="0,0,162,432" alt="left" onClick="changeMinus()" >
-								<area shape="rect" coords="163,0,324,432" alt="right" onClick="changePlus()" >
-							</map>
+						
+						<div id="banner">
+	            		
+						<div class="controller" id="prev"></div>
+
+								<div id="slider">
+									
+									<img src="images/slider/sl01.gif" width="700" height="160" alt="Caption for slide 1"  />
+									<img src="images/slider/sl02.gif" width="700" height="160" alt="Caption for slide 2" />
+									<img src="images/slider/sl03.gif" width="700" height="160" alt="Caption for slide 3"/>
+									<img src="images/slider/sl04.gif" width="700" height="160" alt="Caption for slide 4"/>
+									<img src="images/slider/sl05.gif" width="700" height="160"  alt="Caption for slide 5" />
+									
+								</div>	<!-- End slider-->
+
+							<div class="controller" id="next"></div>
+
+						</div> 		
+			
 						</div>
 						<div class="col-md-6">
 							<div class="container" style="padding:10px; background-color:rgba(155,155,155,0.8); width:80%;height:450px;">
