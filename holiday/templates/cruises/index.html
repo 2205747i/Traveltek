@@ -25,11 +25,11 @@
         <link href="{% static 'sss/bootstrap.css' %}" type="text/css" rel="stylesheet" media="all">
 
         <link href="{% static 'css/style.css' %}" type="text/css" rel="stylesheet" media="all">
-        <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
-        <link type="text/css" rel="stylesheet" href="css/JFFormStyle-1.css" />
+        <link rel="stylesheet" href={% static 'css/flexslider.css' %}" type="text/css" media="screen" />
+        <link type="text/css" rel="stylesheet" href=" {% static 'css/JFFormStyle-1.css' %}" />
         <!-- js -->
-        <script src="js/jquery.min.js"></script>
-        <script src="js/modernizr.custom.js"></script>
+        <script src=" {% static 'js/jquery.min.js' %}"></script>
+        <script src=" {% static 'js/modernizr.custom.js' %}"></script>
         <!-- //js -->
         <!-- fonts -->
         <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,700,500italic,700italic,900,900italic' rel='stylesheet' type='text/css'>
@@ -655,7 +655,7 @@
                         });
                     });
                 </script>
-                <script type="text/javascript" src="js/jquery.flexisel.js"></script>
+                <script type="text/javascript" src="{% 'js/jquery.flexisel.js' %}"></script>
             </div>
         </div>
         <!-- //slider -->
