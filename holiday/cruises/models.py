@@ -26,12 +26,12 @@ class Cruise(models.Model):
 	code_to_cruise_id = models.CharField(unique=True, null=False, max_length=128, primary_key=True)
 	slug = models.URLField(unique = True, blank = True)
 
-    def save(self, *args, **kwargs):
-        self.slug = slugify(self.code_to_cruise_id)
-        super(Cruise, self).save(*args, **kwargs)
+        def save(self, *args, **kwargs):
+                self.slug = slugify(self.code_to_cruise_id)
+                super(Cruise, self).save(*args, **kwargs)
 
-    def __str__(self):
-        return "name: " + self.name + ", codetocruiseid: " + self.code_to_cruise_id
+        def __str__(self):
+                return "name: " + self.name + ", codetocruiseid: " + self.code_to_cruise_id
 
 
 class CabinGrade(models.Model):
@@ -50,7 +50,7 @@ class CabinGrade(models.Model):
     position_middle = models.BooleanField(blank=True)
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.code_to_cruise_id)
+        self.slug = slugify(self.title)
         super(CabinGrade, self).save(*args, **kwargs)
 
     def __str__(self):
@@ -68,7 +68,7 @@ class Cabin(models.Model):
     image = models.URLField(null=False, blank=True)
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.code_to_cruise_id)
+        self.slug = slugify(self.cabin_number)
         super(Cabin, self).save(*args, **kwargs)
 
     def __str__(self):

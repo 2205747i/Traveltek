@@ -42,23 +42,21 @@ def show_cruise(request, code):
 		</request>'''.format(seshkey,)
 		
         r = requests.post('https://fusionapi.traveltek.net/0.9/interface.pl', data = {"xml": testreq})
-		
-
-		root = etree.fromstring(r.text)
-		resultno = root.find("request/method")
-		resultno = resultno.get('resultno')
-		print resultno
-		for element in root.iterfind("results/grade"):
-			title = element.get('description')
-			cabincode = element.get('cabincode')
-			farename = element.get('farename')
-			colourcode = element.get('colourcode')
-			description = element.get('cabintype/description')
-			price = element.get('price')
-			forward = element.get('cabintype/position/forward')
-			middle = element.get('cabintype/position/middle')
-			rear = element.get('cabintype/position/rear')
-			gradeno = element.get('gradeno')
+        root = etree.fromstring(r.text)
+        resultno = root.find("request/method")
+        resultno = resultno.get('resultno')
+        print resultno
+        for element in root.iterfind("results/grade"):
+        	title = element.get('description')
+        	cabincode = element.get('cabincode')
+        	farename = element.get('farename')
+        	colourcode = element.get('colourcode')
+        	description = element.get('cabintype/description')
+        	price = element.get('price')
+        	forward = element.get('cabintype/position/forward')
+        	middle = element.get('cabintype/position/middle')
+        	rear = element.get('cabintype/position/rear')
+        	gradeno = element.get('gradeno')
 
 
 
