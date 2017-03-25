@@ -31,12 +31,11 @@ for element in root.iterfind("results/cruise"):
     sail_nights = element.get("sailnights")
     sail_date = element.get("saildate")
     print ("id: {0}, nights: {1}, name: {2}, sail_nights: {3}, sail_date: {4}".format(id, nights,name,sail_nights, sail_date))
-    c = Cruise.objects.get_or_create(code_to_cruise_id = id,
-    								nights = nights,
-    								name = name,
-    								sail_nights = sail_nights,
-    								sail_date = sail_date)
-    # c.save()
-    print(c)
+    c = Cruise.objects.get_or_create(code_to_cruise_id = id)[0]
+    c.nights = nights
+    c.name = name
+    c.sail_nights = sail_nights
+    c.sail_date = sail_date
+    c.save()
 
 

@@ -19,31 +19,32 @@
 	</head>
 
 	<body style="background-color: #d9d9d9;">
-        <div class="jumbotron">
+
 		<!-- Holds the logo and the site name. -->
-		<div class = "logo">
-			<div class = "logoimg">
-				<img src="{% static "images/logo.png" %}"/>
-			</div>
-		</div>
 
 		<!--Menu bar. -->
 		<div class="header">
+		
+			
+			
 			<nav>
 				<ul class="nav nav-tabs">
-					  <li role="presentation" class="active"><a href="#">Home</a></li>
-					  <li role="presentation"><a href="#">Profile</a></li>
-					  <li role="presentation"><a href="#">Messages</a></li>
+					  <li role="presentation" class="active"><a href="#">Cruises</a></li>
+					  <li role="presentation"><a href="#">Hotels</a></li>
+					  <li role="presentation"><a href="#">Flights</a></li>
 				</ul>
 			</nav>
         </div>
 
 
 		<!-- The main content body of the site. -->
-		<div class = "center">
+
 			{% block body_block %}
 			
 			
 			{% endblock %}
+		<footer>
+		&copy; 2017
+		</footer>
 
 	</body>

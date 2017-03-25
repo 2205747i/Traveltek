@@ -6,7 +6,7 @@
 {% block css_block %}
 	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-
+	<link href="{% static 'css/style.css' %}" type="text/css" rel="stylesheet" media="all">
 {% endblock %}
 
 {% block body_block %}
@@ -14,10 +14,10 @@
 			
 			var imgArray = new Array(8);
 			imgArray[1] = new Image(324,432);
-			imgArray[1].src = "{% static '1.jpg' %}";
+			imgArray[1].src = "{% static 'img1.jpg' %}";
 			for ( var i = 1 ; i <  8 ; i ++) {
 				imgArray[i] = new Image();
-				imgArray[i].src = "{% static ' + " + i + ".jpg' %}";
+				imgArray[i].src = "{% static 'img" + i + ".jpg' %}";
 			}
 			var imgNr = 1; // All the images must be well named...
 			function changePlus(){
@@ -44,9 +44,22 @@
 		
 
 		<div class="col-md-12 header">
-
+				<div class="logo">
+					<h1><a  href="index.html"><span>Sweet</span>Cruises</a></h1>
+					</div>
+					<!--navbar-header-->
+					<div class="header-dropdown">
+						<div class="emergency-grid">
+							<ul>
+								<li>Toll Free : </li>
+								<li class="call">+666 666 666</li>
+							</ul>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+					<div class="clearfix"> </div>
 			<nav>
-				<ul class="nav nav-tabs ">
+				<ul class="nav nav-tabs " style="text-align: center;    margin: auto auto;    width: 400px;">
 					  <li role="presentation" class="active"><a href="#">Home</a></li>
 					  <li role="presentation"><a href="#">Profile</a></li>
 					  <li role="presentation"><a href="#">Messages</a></li>
@@ -63,7 +76,7 @@
 					<!-- container -->
 					<div class="container " style="margin:50px 0">
 						<div class="col-md-6">
-						<a href="#"><img alt="direction" usemap="#directions" name="slideShow" width="324" height="432" src="{% static'1.jpg' %}" alt="harbour0" /></a>
+						<a href="#"><img alt="direction" usemap="#directions" name="slideShow" width="324" height="432" src="{% static 'img1.jpg' %}" alt="harbour0" /></a>
 				
 							<map name="directions">
 								<area shape="rect" coords="0,0,162,432" alt="left" onClick="changeMinus()" >
@@ -75,20 +88,15 @@
 							<form action="" method="get">
 								<table>
 								<tr>
-								<td><input type="radio" name="location" value="EW"/></td>
-								<td>Destination</td>
+									<td><input type="text" placeholder="Destination" class="typeahead1 input-md form-control tt-input" required=""></td>
 								</tr>
 								<tr>
-								<td><input type="radio" name="location" value="S"/></td>
-								<td>Scotland</td>
+									<td><input type="text" placeholder="Cruise Line" class="typeahead1 input-md form-control tt-input" required="">	</td>									</tr>
+								<tr>
+								<td><input type="text" placeholder="Departure" class="typeahead1 input-md form-control tt-input" required=""></td>
 								</tr>
 								<tr>
-								<td><input type="radio" name="location" value="NI"/></td>
-								<td>Northern Ireland</td>
-								</tr>
-								<tr>
-								<td><input type="radio" name="location" value="NI"/></td>
-								<td>Northern Ireland</td>
+								<td><input type="text" placeholder="Duration" class="typeahead1 input-md form-control tt-input" required=""></td>
 								</tr>
 								<tr>
 								<td colspan="2"><input type="submit" value="Get Baby Names"/></td>
