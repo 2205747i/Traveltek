@@ -18,11 +18,11 @@ class Cruise(models.Model):
 	# line_id = models.CharField(null = False, default = None)
 	# region_id = models.CharField(null=False, default=None)
 
-	sail_date = models.DateTimeField(null = False, default = None)
-	nights = models.IntegerField(null = False, default = None)
-	sail_nights = models.IntegerField(null = False, default = 0)
+	sail_date = models.DateTimeField(blank = True, default = None)
+	nights = models.IntegerField(blank = True, default = None)
+	sail_nights = models.IntegerField(blank = True, default = 0)
 	# cruise_id = models.CharField(null = False, default = None, max_length=128)
-	name = models.CharField(null = False, default = None, max_length=128)
+	name = models.CharField(null = False, blank = True, max_length=128)
 	code_to_cruise_id = models.CharField(unique=True, null=False, max_length=128, primary_key=True)
 	slug = models.URLField(unique = True, blank = True)
 
