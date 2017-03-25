@@ -1,2 +1,0 @@
-# Traveltek
-Traveltek hackathon
