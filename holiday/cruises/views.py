@@ -59,6 +59,8 @@ def show_cruise(request, code):
 			rear = element.get('cabintype/position/rear')
 			gradeno = element.get('gradeno')
 
+
+
 	except Cruise.DoesNotExist:
 		print "Could not find cruise."
 		context_dict["cabin_grades"] = None

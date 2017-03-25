@@ -73,4 +73,4 @@ class Cabin(models.Model):
 
     def __str__(self):
         return "cabin_number:  " + self.cabin_number + " deck_name: " + self.deck_name
-    
+
