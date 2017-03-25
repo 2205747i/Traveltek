@@ -30,11 +30,11 @@ class Cruise(models.Model):
         def save(self, *args, **kwargs):
                 self.slug = orig = slugify(self.code_to_cruise_id)
 
-                for x in itertools.count(1):
-            		if not Cruise.objects.filter(slug=self.slug).exists():
-                		break
-           			self.slug = '%s-%d' % (orig, x)
-                super(Cruise, self).save(*args, **kwargs)
+              #   for x in itertools.count(1):
+            		# if not Cruise.objects.filter(slug=self.slug).exists():
+              #   		break
+           			# self.slug = '%s-%d' % (orig, x)
+              #   super(Cruise, self).save(*args, **kwargs)
 
         def __str__(self):
                 return "name: " + self.name + ", codetocruiseid: " + self.code_to_cruise_id
