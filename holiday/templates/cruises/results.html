@@ -4,9 +4,11 @@
 	<title>test</title>
 </head>
 <body>
+<ul style="list-style-type:none">
 {% for cruise in cruises%}
- <a href="{% url 'cruise' cruise.slug %}">{{cruise.name}}, {{cruise.code_to_cruise_id}}</a>
+ <li><a href="{% url 'cruise' cruise.slug %}">{{cruise.name}}, {{cruise.code_to_cruise_id}}</a></li>
  <br>
 {% endfor%}
+</ul>
 </body>
 </html>

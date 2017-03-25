@@ -6,6 +6,8 @@
 <html>
 
 <head>
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <title>
         
         Cruises
@@ -16,23 +18,32 @@
 
 
 
-
+<div style="text-align: center">
 <h1 style ="margin-top: 10px;text-align:center;">Search For A Cruise</h1>
 	<br>
 	<br>
 	<p style="margin-left:40px;"></p>
 	<form method="post" action="{% url 'test' %}" style="margin-left:50px;">
 	{% csrf_token %}
-		<label for="start_date">Start date:</label>
+	<ul style="list-style-type:none">
+		<li><label for="start_date">Start date:</label></li>
          <input type="date" name="start">
         <br>
-		<label for="end_date">End date:</label>
+		<li><label for="end_date">End date:</label></li>
          <input type="date" name="end">
         <br>
-		<label for="nights">Nights: </label>
+		<li><label for="nights">Nights: </label></li>
 		 <input type="text" name="nights">
+		 <br>
+		 <li><label for="adults">Adults :</label></li>
+         <input type="number" min="0" name="adults">
+		 <br>
+		 <li><label for="children">Children :</label></li>
+         <input type="number" min="0" name="children">
+		 <br>
 		 <input type="submit" name="submit" value="add tag"/>
     </form>
 	<br>
+</div>
 		</body>
 		</html>
