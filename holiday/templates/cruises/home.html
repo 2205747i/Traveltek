@@ -1,4 +1,4 @@
-{% extends 'foodbookapp/base.html' %}
+{% extends 'cruises/base.html' %}
 
 {% load staticfiles %}
 
@@ -42,7 +42,7 @@
 			}
 		</script>
 		
-	<a href="#"><img alt="direction" usemap="#directions" name="slideShow" width="324" height="432" src="images5.10/harbour0.jpg" alt="harbour0" /></a>
+	<a href="#"><img alt="direction" usemap="#directions" name="slideShow" width="324" height="432" src="{% static'1.jpg' %}" alt="harbour0" /></a>
 	
 		<map name="directions">
 			<area shape="rect" coords="0,0,162,432" alt="left" onClick="changeMinus()" >

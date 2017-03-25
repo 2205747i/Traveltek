@@ -10,26 +10,38 @@
 	</head>
 	
 <body>
-		<div class="row">
+		<div class="col-md-12 header">
+
+			<nav>
+				<ul class="nav nav-tabs ">
+					  <li role="presentation" class="active"><a href="#">Home</a></li>
+					  <li role="presentation"><a href="#">Profile</a></li>
+					  <li role="presentation"><a href="#">Messages</a></li>
+				</ul>
+			</nav>
+        </div>
+		<div class="clearfix" ></div>
+		
+		<div class="row" style="margin-top:100px">
 	
 			<div class="container">
 			
-					<script type="text/javascript">
+			<script type="text/javascript">
 			
-			var imgArray = new Array(8);
-			imgArray[1] = new Image(324,432);
-			imgArray[1].src = "{% static 'images/1.jpg' %}";
-			for ( var i = 1 ; i <  8 ; i ++) {
+			var imgArray = new Array(9);
+			imgArray[0] = new Image(324,432);
+			imgArray[0].src = "images/harbour0.jpg";
+			for ( var i = 0 ; i <  9 ; i ++) {
 				imgArray[i] = new Image();
-				imgArray[i].src = "{% static 'images/" + i + ".jpg' %}";
+				imgArray[i].src = "images/harbour" + i + ".jpg";
 			}
-			var imgNr = 1; // All the images must be well named...
+			var imgNr = 0; // All the images must be well named...
 			function changePlus(){
 				imgNr++;
 				document.slideShow.src = imgArray[imgNr].src;
 				
 				if (imgNr == 8 ){
-					imgNr = 1;
+					imgNr = 0;
 				}
 				console.log(document.slideShow.src);
 				return ;
@@ -38,15 +50,15 @@
 				imgNr--;
 				document.slideShow.src = imgArray[imgNr].src;
 				
-				if (imgNr == 1 ){
-					imgNr = 8;
+				if (imgNr == 0 ){
+					imgNr = 9;
 				}
 				console.log(document.slideShow.src);
 				return ;
 			}
 		</script>
 		
-	<a href="#"><img alt="direction" usemap="#directions" name="slideShow" width="324" height="432" src="images5.10/harbour0.jpg" alt="harbour0" /></a>
+	<a href="#"><img alt="direction" usemap="#directions" name="slideShow" width="324" height="432" src="images/harbour0.jpg" alt="harbour0" /></a>
 	
 		<map name="directions">
 			<area shape="rect" coords="0,0,162,432" alt="left" onClick="changeMinus()" >
