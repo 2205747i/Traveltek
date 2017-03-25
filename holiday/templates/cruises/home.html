@@ -7,37 +7,7 @@
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-	<script type="text/javascript">
-			
-			var imgArray = new Array(8);
-			imgArray[1] = new Image(324,432);
-			imgArray[1].src = "{% static 'img1.jpg' %}";
-			for ( var i = 1 ; i <  8 ; i ++) {
-				imgArray[i] = new Image();
-				imgArray[i].src = "{% static 'img" + i + ".jpg' %}";
-			}
-			var imgNr = 1; // All the images must be well named...
-			function changePlus(){
-				imgNr++;
-				document.slideShow.src = imgArray[imgNr].src;
-				
-				if (imgNr == 8 ){
-					imgNr = 1;
-				}
-				console.log(document.slideShow.src);
-				return ;
-			}
-			function changeMinus(){
-				imgNr--;
-				document.slideShow.src = imgArray[imgNr].src;
-				
-				if (imgNr == 1 ){
-					imgNr = 8;
-				}
-				console.log(document.slideShow.src);
-				return ;
-			}
-		</script>
+
 		
 
 		<div class="col-md-12 header">
@@ -73,12 +43,9 @@
 					<!-- container -->
 					<div class="container " style="margin:50px 0">
 						<div class="col-md-6">
-						<a href="#"><img alt="direction" usemap="#directions" name="slideShow" width="324" height="432" src="{% static 'images/img1.jpg' %}" alt="harbour0" /></a>
+						<a href="#"><img alt="direction" usemap="#directions" name="slideShow" width="324" height="432" src="{% static 'img1.jpg' %}" alt="harbour0" /></a>
 				
-							<map name="directions">
-								<area shape="rect" coords="0,0,162,432" alt="left" onClick="changeMinus()" >
-								<area shape="rect" coords="163,0,324,432" alt="right" onClick="changePlus()" >
-							</map>
+
 						</div>
 						<div class="col-md-6">
 							<div class="container" style="padding:10px; background-color:rgba(155,155,155,0.8); width:80%;height:450px;">
