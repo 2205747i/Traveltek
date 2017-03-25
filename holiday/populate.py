@@ -1,5 +1,6 @@
 import requests
 from lxml import etree
+from cruises import models
 
 testreq = '''<?xml version="1.0"?>
 <request>
@@ -16,11 +17,18 @@ testreq = '''<?xml version="1.0"?>
 print(testreq)
 
 r = requests.post('https://fusionapi.traveltek.net/0.9/interface.pl', data = {"xml": testreq})
-
+root = etree.fromstring(r.text)
 for element in root.iterfind("results/cruise"):
-	
+    id = element.get("codetocruiseid")
+    c = Cruise.objects.get_or_create(code_to_cruise_id = id)
+    nights = element.get("nights")
+    c.nights = nights
     name = element.get("name")
-    price = element.get('price')
-    print("{0} is {1}]".format(name, price))
+    c.name = name
+    sail = element.get("sailnights")
+    c.sail_nights = sail
+    date = element.get("saildate")
+    c.sail_date = date
+    c.save()
 
 
