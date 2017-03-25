@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+
+{% load staticfiles %}
+
+<html>
+
+<head>
+    <title>
+        
+        Cruises
+       
+    </title>
+</head>
+<body>
+
+
+
+
+<h1 style ="margin-top: 10px;text-align:center;">Search For A Cruise</h1>
+	<br>
+	<br>
+	<p style="margin-left:40px;"></p>
+	<form method="post" action="{% url 'test' %}" style="margin-left:50px;">
+		<label for="start_date">Start date:</label>
+         <input type="date" name="start">
+        <br>
+		<label for="end_date">End date:</label>
+         <input type="date" name="end">
+        <br>
+		<label for="nights">Nights: </label>
+		 <input type="text" name="nights">
+    </form>
+	<br>
+	<button type="button">Submit</button>
+		
+		
+		</body>
+		</html>
