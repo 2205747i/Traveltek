@@ -3,7 +3,33 @@ Author: W3layouts
 Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
+
 --*/
+@-webkit-keyframes example{
+    0%   {font-color: red;}
+    25%  {font-color: yellow;}
+    50%  {font-color: blue;}
+    100% {font-color: green;}
+}
+h1{
+	animation-name: example;
+    animation-duration: 4s;
+}
+/* Standard syntax */
+@keyframes example2{
+    0%   {background-color: red;}
+    25%  {background-color: yellow;}
+    50%  {background-color: blue;}
+    100% {background-color: green;}
+}
+div {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    animation-name: example2;
+    animation-duration: 4s;
+}
+
 body{
 	margin:0;
 	font-family: 'Open Sans', sans-serif;
