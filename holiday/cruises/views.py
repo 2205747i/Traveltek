@@ -4,7 +4,7 @@ from django.core.urlresolvers import reverse
 import requests
 from lxml import etree
 from datetime import datetime
-from cruises.models import Cruise
+from cruises.models import Cruise, CabinGrade
 
 # Create your views here.
 def home(request):
@@ -47,26 +47,29 @@ def show_cruise(request, code):
         resultno = root.find("request/method")
         resultno = resultno.get('resultno')
         print resultno
-        for element in root.iterfind("results/grades"):
+        context_dict = {}
+        context_dict["cabingrades"] = []
+        for element in root.iterfind("results/grades/grade"):
         	title = element.get('description')
         	cabincode = element.get('cabincode')
         	farename = element.get('farename')
         	colourcode = element.get('colourcode')
         	gradeno = element.get('gradeno')
         	price = element.get('price')
-        	cabintype = element.find("cabintype")
-        	print(cabintype)
-        	description = cabintype.get('description')
-        	image = cabintype.get('imageurl')
-        	cabintype = cabintype.find("position")
-        	forward = cabintype.get('forward')
-        	middle = cabintype.get('middle')
-        	rear = cabintype.get('rear')
-        	cg = CabinGrade.objects.get_or_create(title = title, description = description,
-        		price = price, grade_number = gradeno, result_number = resultno, session_key = seshkey,
-        		image = image, cabin_code = cabincode, farename = farename, colour_code = colourcode,
-        		position_forward = forward, position_rear = rear, position_middle = middle)[0]
+        	print(title)
+      		print(price)
+        	# description = cabintype.get('description')
+        	# image = cabintype.get('imageurl')
+        	# cabintype = cabintype.find("position")
+        	# forward = cabintype.get('forward')
+        	# middle = cabintype.get('middle')
+        	# rear = cabintype.get('rear')
+        	cg = CabinGrade.objects.get_or_create(title = title, price = price, grade_number = gradeno, result_number = resultno, session_key = seshkey,
+        		cabin_code = cabincode, farename = farename)[0]
+        	context_dict["cabingrades"] = context_dict["cabingrades"] +[cg]
+
         	cg.save()
+        return render(request, 'cruises/cruise.html', context_dict)
 
 
 
@@ -86,7 +89,7 @@ def test(request):
         start_date = datetime.strptime(start_date, '%Y-%m-%d')
         end_date = request.POST["end"]
         end_date = datetime.strptime(end_date, '%Y-%m-%d')
-        print start_date, end_date
+        print "hellO" , start_date, end_date
         cruises = Cruise.objects.filter(sail_date__range = [start_date, end_date])
         print cruises
         for cruise in cruises:

@@ -1,5 +1,5 @@
 from __future__ import unicode_literals
-
+import itertools
 from django.template.defaultfilters import slugify
 from django.db import models
 
@@ -28,7 +28,12 @@ class Cruise(models.Model):
 	slug = models.URLField(unique = True, blank = True)
 
         def save(self, *args, **kwargs):
-                self.slug = slugify(self.code_to_cruise_id)
+                self.slug = orig = slugify(self.code_to_cruise_id)
+
+                for x in itertools.count(1):
+            		if not Cruise.objects.filter(slug=self.slug).exists():
+                		break
+           			self.slug = '%s-%d' % (orig, x)
                 super(Cruise, self).save(*args, **kwargs)
 
         def __str__(self):
@@ -36,19 +41,18 @@ class Cruise(models.Model):
 
 
 class CabinGrade(models.Model):
-    description = models.CharField(null = False, default = None, max_length=128)
+    # description = models.CharField(null = False, default = None, max_length=128)
     price = models.CharField(null = False, default = None, max_length=128)
     grade_number = models.CharField(null = False, default = None, max_length=128)
     result_number = models.CharField(null = False, default = None, max_length=128)
     title = models.CharField(null = False, default = None, max_length=128)
     session_key = models.CharField(null = False, default = None, max_length=128)
-    image = models.URLField(blank=True, null=False)
+    # image = models.URLField(blank=True, null=False)
     cabin_code = models.CharField(null=False, default=None, max_length=128)
     farename = models.CharField(null=False, default=None, max_length=128)
-    colour_code = models.CharField(null=False, default=None, max_length=128)
-    position_forward = models.BooleanField(blank=True)
-    position_rear = models.BooleanField(blank=True)
-    position_middle = models.BooleanField(blank=True)
+    # position_forward = models.BooleanField(blank=True)
+    # position_rear = models.BooleanField(blank=True)
+    # position_middle = models.BooleanField(blank=True)
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
