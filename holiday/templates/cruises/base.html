@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+{% load staticfiles %}
+
+
+	<head>
+		<title>
+			{% block title_block %}
+				FoodBook 
+			{% endblock %}
+		</title>
+
+		<!-- Allows child html files to assign extra css. -->
+		{% block css_block %}
+		{% endblock %}
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/basestyle.css' %}">
+        <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+	</head>
+
+	<body style="background-color: #d9d9d9;">
+        <div class="jumbotron">
+		<!-- Holds the logo and the site name. -->
+		<div class = "logo">
+			<div class = "logoimg">
+				<img src="{% static "images/logo.png" %}"/>
+			</div>
+		</div>
+
+		<!--Menu bar. -->
+		<div class="header">
+			<nav>
+				<ul class="nav nav-tabs">
+					  <li role="presentation" class="active"><a href="#">Home</a></li>
+					  <li role="presentation"><a href="#">Profile</a></li>
+					  <li role="presentation"><a href="#">Messages</a></li>
+				</ul>
+			</nav>
+        </div>
+
+
+		<!-- The main content body of the site. -->
+		<div class = "center">
+			{% block body_block %}
+			
+			
+			{% endblock %}
+
+	</body>
