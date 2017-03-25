@@ -19,5 +19,5 @@ from cruises import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', include('cruises.urls')),
+    url(r'^', include('cruises.urls')),
 ]
