@@ -20,9 +20,9 @@ class Cruise(models.Model):
 	sail_date = models.DateTimeField(null = False, default = None)
 	nights = models.IntegerField(null = False, default = None)
 	sail_nights = models.IntegerField(null = False, default = 0)
-	cruise_id = models.CharField(null = False, default = None, max_length=128)
+	# cruise_id = models.CharField(null = False, default = None, max_length=128)
 	name = models.CharField(null = False, default = None, max_length=128)
-	code_to_cruise_id = models.CharField(unique=True, null=False, default=None, max_length=128, primary_key=True)
+	code_to_cruise_id = models.CharField(unique=True, null=False, max_length=128, primary_key=True)
 
 	def __str__(self):
 		return "name: " + self.name + " codetocruiseid: " + self.code_to_cruise_id

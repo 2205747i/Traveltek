@@ -14,7 +14,7 @@ testreq = '''<?xml version="1.0"?>
  <method action="simplesearch" sitename="cruisedemo.traveltek.net"
  status="Live" type="cruise">
  <searchdetail 
- 	type="cruise" startdate="2017-04-01" enddate="2017-04-30"
+ 	type="cruise" startdate="2017-04-01" enddate="2017-04-02"
 	adults="2" children="0" sid="30115" resultkey="default">
  </searchdetail>
  </method>
@@ -26,16 +26,17 @@ r = requests.post('https://fusionapi.traveltek.net/0.9/interface.pl', data = {"x
 root = etree.fromstring(r.text)
 for element in root.iterfind("results/cruise"):
     id = element.get("codetocruiseid")
-    c = Cruise.objects.get_or_create(code_to_cruise_id = id)
     nights = element.get("nights")
-    c.nights = nights
     name = element.get("name")
-    c.name = name
-    sail = element.get("sailnights")
-    c.sail_nights = sail
-    date = element.get("saildate")
-    c.sail_date = date
-    c.save()
+    sail_nights = element.get("sailnights")
+    sail_date = element.get("saildate")
+    print ("id: {0}, nights: {1}, name: {2}, sail_nights: {3}, sail_date: {4}".format(id, nights,name,sail_nights, sail_date))
+    c = Cruise.objects.get_or_create(code_to_cruise_id = id,
+    								nights = nights,
+    								name = name,
+    								sail_nights = sail_nights,
+    								sail_date = sail_date)
+    # c.save()
     print(c)
 
 
