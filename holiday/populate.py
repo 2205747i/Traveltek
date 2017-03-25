@@ -25,7 +25,7 @@ print(testreq)
 
 r = requests.post('https://fusionapi.traveltek.net/0.9/interface.pl', data = {"xml": testreq})
 root = etree.fromstring(r.text)
-print "sdf"
+print r.text
 for element in root.iterfind("results/cruise"):
     id = element.get("codetocruiseid")
     nights = element.get("nights")
