@@ -26,7 +26,7 @@ def show_cruise(request, code):
 					type="cruise" adults="2" children="0" codetocruiseid="955202" sid="30115" resultkey="default">
 					</searchdetail>
  </method>
-</request>'''
+</request>'''.format(cruise.adults, cruise.children)
 		
         r = requests.post('https://fusionapi.traveltek.net/0.9/interface.pl', data = {"xml": testreq})
 		
@@ -43,20 +43,30 @@ def show_cruise(request, code):
 		
         r = requests.post('https://fusionapi.traveltek.net/0.9/interface.pl', data = {"xml": testreq})
         root = etree.fromstring(r.text)
+        print(r.text)
         resultno = root.find("request/method")
         resultno = resultno.get('resultno')
         print resultno
-        for element in root.iterfind("results/grade"):
+        for element in root.iterfind("results/grades"):
         	title = element.get('description')
         	cabincode = element.get('cabincode')
         	farename = element.get('farename')
         	colourcode = element.get('colourcode')
-        	description = element.get('cabintype/description')
-        	price = element.get('price')
-        	forward = element.get('cabintype/position/forward')
-        	middle = element.get('cabintype/position/middle')
-        	rear = element.get('cabintype/position/rear')
         	gradeno = element.get('gradeno')
+        	price = element.get('price')
+        	cabintype = element.find("cabintype")
+        	print(cabintype)
+        	description = cabintype.get('description')
+        	image = cabintype.get('imageurl')
+        	cabintype = cabintype.find("position")
+        	forward = cabintype.get('forward')
+        	middle = cabintype.get('middle')
+        	rear = cabintype.get('rear')
+        	cg = CabinGrade.objects.get_or_create(title = title, description = description,
+        		price = price, grade_number = gradeno, result_number = resultno, session_key = seshkey,
+        		image = image, cabin_code = cabincode, farename = farename, colour_code = colourcode,
+        		position_forward = forward, position_rear = rear, position_middle = middle)[0]
+        	cg.save()
 
 
 
@@ -76,7 +86,12 @@ def test(request):
         start_date = datetime.strptime(start_date, '%Y-%m-%d')
         end_date = request.POST["end"]
         end_date = datetime.strptime(end_date, '%Y-%m-%d')
+        print start_date, end_date
         cruises = Cruise.objects.filter(sail_date__range = [start_date, end_date])
+        print cruises
+        for cruise in cruises:
+        	cruise.adults = request.POST["adults"]
+        	cruise.adults = request.POST["children"]
         context_dict["cruises"] = cruises
     # cruises = Cruise.objects.filter()
     # context_dict["cruises"] = cruises

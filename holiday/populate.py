@@ -5,6 +5,7 @@ django.setup()
 import requests
 from lxml import etree
 from cruises.models import Cruise
+from datetime import datetime
 
 
 
@@ -31,7 +32,7 @@ for element in root.iterfind("results/cruise"):
     sail_nights = element.get("sailnights")
     sail_date = element.get("saildate")
     print ("id: {0}, nights: {1}, name: {2}, sail_nights: {3}, sail_date: {4}".format(id, nights,name,sail_nights, sail_date))
-    c = Cruise.objects.get_or_create(code_to_cruise_id = id)[0]
+    c = Cruise.objects.get_or_create(code_to_cruise_id = id, sail_date = datetime.now())[0]
     c.nights = nights
     c.name = name
     c.sail_nights = sail_nights
