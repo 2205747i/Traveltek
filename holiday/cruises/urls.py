@@ -8,5 +8,6 @@ from django.conf.urls.static import static
 urlpatterns = [
     url(r'^$', views.home, name='home'),
     url(r'^test', views.test, name='test'),
+    url(r'^form', views.form, name='form'),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

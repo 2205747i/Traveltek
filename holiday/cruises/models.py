@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 
+from django.template.defaultfilters import slugify
 from django.db import models
 
 class Cruise(models.Model):
@@ -23,6 +24,11 @@ class Cruise(models.Model):
 	# cruise_id = models.CharField(null = False, default = None, max_length=128)
 	name = models.CharField(null = False, default = None, max_length=128)
 	code_to_cruise_id = models.CharField(unique=True, null=False, max_length=128, primary_key=True)
+	slug = models.URLField(unique = True, blank = True)
+
+	def save(self, *args, **kwargs):
+                self.slug = slugify(self.code_to_cruise_id)
+                super(Cruise, self).save(*args, **kwargs)
 
 	def __str__(self):
 		return "name: " + self.name + ", codetocruiseid: " + self.code_to_cruise_id
