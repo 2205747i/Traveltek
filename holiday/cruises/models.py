@@ -26,25 +26,27 @@ class Cruise(models.Model):
 	code_to_cruise_id = models.CharField(unique=True, null=False, max_length=128, primary_key=True)
 	slug = models.URLField(unique = True, blank = True)
 
-	def save(self, *args, **kwargs):
-                self.slug = slugify(self.code_to_cruise_id)
-                super(Cruise, self).save(*args, **kwargs)
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.code_to_cruise_id)
+        super(Cruise, self).save(*args, **kwargs)
 
-	def __str__(self):
-		return "name: " + self.name + ", codetocruiseid: " + self.code_to_cruise_id
+    def __str__(self):
+        return "name: " + self.name + ", codetocruiseid: " + self.code_to_cruise_id
 
-# class Hotel(models.Model):
-# 	name = models.CharField(null = False, default = None, max_length=128)
-# 	image = models.URLField(null = False, default = None)
-# 	description = models.CharField(null = False, default = None, max_length=128)
-# 	checkin = models.DateField(null = False, default = None)
-# 	lat = models.CharField(null = False, default = None, max_length=128)
-# 	lon = models.CharField(null = False, default = None, max_length=128)
-# 	cheapestprice = models.FloatField(null = False, default = None)
-#
-# 	def __str__(self):
-# 		return "name: " + self.name
-#
-# class Flight(models.Model):
-# 	carrier = models.CharField(null = False, default = None, max_length=128)
-#
+
+class CabinGrade(models.Model):
+    description = models.CharField(null = False, default = None, max_length=128)
+    price = models.CharField(null = False, default = None, max_length=128)
+    grade_number = models.CharField(null = False, default = None, max_length=128)
+    result_number = models.CharField(null = False, default = None, max_length=128)
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.code_to_cruise_id)
+        super(Cruise, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return "result_number: " + self.result_number
+
+
+#class Cabin(models.Model):
+
