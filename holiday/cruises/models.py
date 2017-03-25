@@ -39,13 +39,22 @@ class CabinGrade(models.Model):
     price = models.CharField(null = False, default = None, max_length=128)
     grade_number = models.CharField(null = False, default = None, max_length=128)
     result_number = models.CharField(null = False, default = None, max_length=128)
+    title = models.CharField(null = False, default = None, max_length=128)
+    session_key = models.CharField(null = False, default = None, max_length=128)
+
+    cabin_code = models.CharField(null=False, default=None, max_length=128)
+    farename = models.CharField(null=False, default=None, max_length=128)
+    colour_code = models.CharField(null=False, default=None, max_length=128)
+    position_forward = models.BooleanField(blank=True)
+    position_rear = models.BooleanField(blank=True)
+    position_middle = models.BooleanField(blank=True)
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.code_to_cruise_id)
-        super(Cruise, self).save(*args, **kwargs)
+        super(CabinGrade, self).save(*args, **kwargs)
 
     def __str__(self):
-        return "result_number: " + self.result_number
+        return "grade_number: " + self.grade_number + " title: " + self.title
 
 
 #class Cabin(models.Model):
