@@ -8,5 +8,7 @@ def home(request):
     return render(request, 'cruises/index.html')
 
 def test(request):
-	
-	return HttpResponse("hello");
+	print(request.data)
+	cruises = Cruise.objects.filter()
+	context_dict["cruises"] = cruises
+	return render(request, results.html, context_dict);
