@@ -15,7 +15,7 @@ testreq = '''<?xml version="1.0"?>
  <method action="simplesearch" sitename="cruisedemo.traveltek.net"
  status="Live" type="cruise">
  <searchdetail 
- 	type="cruise" startdate="2017-04-01" enddate="2018-04-05"
+ 	type="cruise" startdate="2017-04-01" enddate="2017-04-30"
 	adults="2" children="0" sid="30115" resultkey="default">
  </searchdetail>
  </method>
