@@ -46,6 +46,8 @@ def show_cruise(request, code):
 		root = etree.fromstring(r.text)
 		print r.text
 
+
+
 	except Cruise.DoesNotExist:
 		print "Could not find cruise."
 		context_dict["cabin_grades"] = None
