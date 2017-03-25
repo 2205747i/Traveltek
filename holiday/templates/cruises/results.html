@@ -5,7 +5,8 @@
 </head>
 <body>
 {% for cruise in cruises%}
-{{cruise}}
+ <a href="{% url 'cruise' cruise.slug %}">{{cruise.name}}, {{cruise.code_to_cruise_id}}</a>
+ <br>
 {% endfor%}
 </body>
 </html>
