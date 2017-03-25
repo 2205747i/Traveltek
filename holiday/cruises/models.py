@@ -24,3 +24,6 @@ class Cruise(models.Model):
 	name = models.CharField(null = False, default = None, max_length=128)
 	code_to_cruise_id = models.CharField(unique=True, null=False, default=None, max_length=128, primary_key=True)
 
+	def __str__(self):
+		return "name: " + self.name + " codetocruiseid: " + self.code_to_cruise_id
+

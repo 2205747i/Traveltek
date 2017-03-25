@@ -1,6 +1,12 @@
+import os
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'holiday.settings')
+import django
+django.setup()
 import requests
 from lxml import etree
-from cruises import models
+from cruises.models import Cruise
+
+
 
 testreq = '''<?xml version="1.0"?>
 <request>
@@ -30,5 +36,6 @@ for element in root.iterfind("results/cruise"):
     date = element.get("saildate")
     c.sail_date = date
     c.save()
+    print(c)
 
 
