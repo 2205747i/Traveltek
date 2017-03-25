@@ -15,7 +15,7 @@ testreq = '''<?xml version="1.0"?>
  <method action="simplesearch" sitename="cruisedemo.traveltek.net"
  status="Live" type="cruise">
  <searchdetail 
- 	type="cruise" startdate="2017-04-01" enddate="2017-04-30"
+ 	type="cruise" startdate="2017-04-01" enddate="2017-04-03"
 	adults="2" children="0" sid="30115" resultkey="default">
  </searchdetail>
  </method>
@@ -38,6 +38,7 @@ for element in root.iterfind("results/cruise"):
     c.name = name
     c.sail_nights = sail_nights
     c.sail_date = sail_date
+    print("sdfd ", c)
     c.save()
-
+    print c.name
 

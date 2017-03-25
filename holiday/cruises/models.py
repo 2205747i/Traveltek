@@ -34,7 +34,7 @@ class Cruise(models.Model):
             		# if not Cruise.objects.filter(slug=self.slug).exists():
               #   		break
            			# self.slug = '%s-%d' % (orig, x)
-              #   super(Cruise, self).save(*args, **kwargs)
+                super(Cruise, self).save(*args, **kwargs)
 
         def __str__(self):
                 return "name: " + self.name + ", codetocruiseid: " + self.code_to_cruise_id
