@@ -6,3 +6,7 @@ from django.core.urlresolvers import reverse
 def home(request):
 
     return render(request, 'cruises/index.html')
+
+def test(request):
+	
+	return HttpResponse("hello");
